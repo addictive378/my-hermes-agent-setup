@@ -45,3 +45,4 @@ telegram_update_receipts_*.json
 # === Embedded git repos (punya .git sendiri) ===
 hermes-agent/
 obsidian/
+tools/

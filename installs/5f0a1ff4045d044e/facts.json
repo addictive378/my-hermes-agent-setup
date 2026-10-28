@@ -1,0 +1,15 @@
+{
+  "packages": {
+    "venv": {
+      "environment": "/home/ubuntu/.hermes/installs/5f0a1ff4045d044e/environments/c236aecc01134818b72597f35fef8620/venv",
+      "extras": [
+        "all",
+        "edge-tts",
+        "telegram"
+      ],
+      "resolved_lock": "/home/ubuntu/.hermes/installs/5f0a1ff4045d044e/environments/c236aecc01134818b72597f35fef8620/workspace/uv.lock",
+      "stamp": "2352dc37639d9ff66d057a055f2c2708069549c3a62d6c355ad331bfd3b88a9d"
+    }
+  },
+  "schema": 1
+}

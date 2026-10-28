@@ -1,0 +1,25 @@
+{
+  "updated_at": "2026-10-28T11:28:06.997584",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "-1004375547308:1",
+        "name": "hermess / topic 1",
+        "type": "group",
+        "thread_id": "1"
+      },
+      {
+        "id": "8549957474",
+        "name": "Adi Saputra",
+        "type": "dm",
+        "thread_id": null
+      },
+      {
+        "id": "-1004375547308",
+        "name": "hermess",
+        "type": "group",
+        "thread_id": null
+      }
+    ]
+  }
+}

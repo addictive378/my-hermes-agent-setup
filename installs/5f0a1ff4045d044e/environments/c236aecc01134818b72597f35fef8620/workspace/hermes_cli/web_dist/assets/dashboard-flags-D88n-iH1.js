@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{h as t}from"./react-vendor-BoVnYuL4.js";var n=e(t(),1),r=(0,n.createContext)(null);function i(){let e=(0,n.useContext)(r);if(!e)throw Error(`useSystemActions must be used within a SystemActionsProvider`);return e}function a(){return!0}export{i as n,r,a as t};

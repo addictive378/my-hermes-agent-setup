@@ -1,0 +1,26 @@
+[Unit]
+Description=<App name> - production server
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=<user>
+Group=<user>
+WorkingDirectory=/home/<user>/<app-dir>
+Environment=NODE_ENV=production
+Environment=PORT=<port>
+Environment=HOSTNAME=127.0.0.1
+# Use the ABSOLUTE path to the node binary: cron/systemd do not inherit your
+# shell PATH, and a version-manager shim (nvm, hermes tools) will not resolve.
+ExecStart=/absolute/path/to/node node_modules/next/dist/bin/next start -p <port> -H 127.0.0.1
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

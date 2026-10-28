@@ -1,0 +1,4 @@
+context_lengths:
+  mycombo@http://localhost:20128/v1: 1000000
+  softwareengineer@http://localhost:20128/v1: 1000000
+  writer@http://localhost:20128/v1: 262144

@@ -1,0 +1,64 @@
+{
+  "id": "3dc8962a",
+  "subsystem": "memory",
+  "action": "batch",
+  "summary": "background review consolidation (batch on memory): - replace entry matching 'Vault Obsidian (otak kedua)' -> whole entry becomes: Vault Obsidian (otak kedua): ~/.hermes/obsidian, GitHub addictive378/o",
+  "origin": "background_review",
+  "created_at": 1792880031.4900353,
+  "payload": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+      {
+        "action": "replace",
+        "old_text": "Vault Obsidian (otak kedua)",
+        "content": "Vault Obsidian (otak kedua): ~/.hermes/obsidian, GitHub addictive378/obsidian. Struktur 00-Inbox/10-Systems/20-Research/30-Briefs/40-Drafts/50-Published/90-Log. Simpan riset/brief/draft/keputusan ke vault, bukan hanya di chat.",
+        "matched_entry": "Vault Obsidian (otak kedua): /home/ubuntu/.hermes/obsidian, GitHub addictive378/obsidian (main). Folder: 00-Inbox, 10-Systems, 20-Research, 30-Briefs, 40-Drafts, 50-Published, 90-Log; peta di START-HERE.md. Simpan riset/brief/draft/keputusan ke vault, bukan hanya di chat."
+      },
+      {
+        "action": "replace",
+        "old_text": "Adi (pemilik) menjalankan blog",
+        "content": "Profil Hermes Adi: `default` (leader), `writer` (artikel blog), `videomaker` (video 1 menit/Remotion), `softwareengineer` (kode/deploy).",
+        "matched_entry": "Adi (pemilik) menjalankan blog + kanal video dengan profil Hermes: `default` (leader — koordinator/review), `writer` (artikel blog), `videomaker` (video 1 menit, Remotion, ~/video-studio), `softwareengineer` (kode/debug/deploy, SOUL di ~/.hermes/profiles/softwareengineer/SOUL.md). Combo 9router: leader, writer, videomaker, softwareengineer."
+      },
+      {
+        "action": "replace",
+        "old_text": "Cron VPS tiap 5 menit",
+        "content": "Cron VPS: ~/sync-vault.sh tiap 5 menit (fetch→rebase→push, konflik ke branch hermes-conflict-*); ~/sync-workspace.sh tiap 10 menit (rclone bisync workspace ↔ Drive).",
+        "matched_entry": "Cron VPS tiap 5 menit menjalankan ~/sync-vault.sh (tag hermes-obsidian-sync): fetch→rebase→push 3x retry, konflik disimpan di branch hermes-conflict-*, flock, log ~/.hermes/logs/sync-vault.log."
+      },
+      {
+        "action": "replace",
+        "old_text": "Agent Reach 1.6.0",
+        "content": "Agent Reach 1.6.0 (~/.local/bin/agent-reach, skill tersymlink ke tiap profil). Channel: github, youtube, bilibili, v2ex, web — read-only tanpa login; channel lain butuh login browser (tidak bisa di VPS headless).",
+        "matched_entry": "Agent Reach 1.6.0 di ~/.local/bin/agent-reach (skill tersymlink ke ~/.hermes/skills/agent-reach). Channel aktif: github, youtube, bilibili, v2ex, web (read-only, tanpa login). Channel lain butuh login browser — TIDAK bisa di VPS headless ini."
+      },
+      {
+        "action": "replace",
+        "old_text": "2026-10-24: Google Drive terhubung",
+        "content": "Google Drive via OAuth2 (herrmes-512606, Drive+Docs+Sheets), kredensial per profil. Workspace tiap agent = subfolder di folder Drive 'Hermes' (ID di vault 10-Systems), mirror ~/workspace/<profil>, bisync 10 menit.",
+        "matched_entry": "2026-10-24: Google Drive terhubung via OAuth2 (project herrmes-512606, scope Drive+Docs+Sheets). Kredensial di ~/.hermes/ dan disalin ke tiap profil. Workspace: writer → 'writer-workspace' (1pbpZkIUhNrCRwBVpHTzqfGpk7pjhh0FE), videomaker → 'videomaker-workspace' (11bDbv8E3pHGPSot2YmqyFk6Eb8R-Y3Vd). Setup script tidak mendukung --services; URL otorisasi dibuat manual untuk scope minimal."
+      },
+      {
+        "action": "replace",
+        "old_text": "Video: ~/video-studio",
+        "content": "Video: ~/video-studio = Remotion 4.0.538 (Node v26.7.0), 60s@30fps; konten di src/specs/*.ts; komposisi OneMinute-Vertical/Horizontal/Square; verifikasi pakai --frames=0-299. Belum ada audio/TTS.",
+        "matched_entry": "Video: ~/video-studio = proyek Remotion 4.0.538 (Node v26.7.0), 60s @30fps. Konten diedit di src/specs/*.ts (VideoSpec). Komposisi: OneMinute-Vertical/Horizontal/Square. Verifikasi pakai --frames=0-299 dulu. Belum ada audio/TTS."
+      },
+      {
+        "action": "replace",
+        "old_text": "Situs berita produksi",
+        "content": "Situs produksi: ~/news-web (Next.js 16 + PostgreSQL 14, GitHub addictive378/news-web) → https://wartanusaku.site; systemd news-web.service di 127.0.0.1:3000, nginx+TLS. /admin dilindungi Basic Auth nginx + rate limit 20/menit; akun via `npm run admin -- list|create|passwd|delete`. API writer: POST /api/integrations/hermes/articles (Bearer HERMES_API_KEY) → draft.",
+        "matched_entry": "Situs berita produksi: ~/news-web (Next.js 16 + PostgreSQL 14, GitHub addictive378/news-web) live di https://wartanusaku.site. systemd news-web.service di 127.0.0.1:3000, nginx + Let's Encrypt. Admin: /admin dilindungi Basic Auth nginx (htpasswd /etc/nginx/.htpasswd-warta) + rate limit 20/menit. Kelola akun: `npm run admin -- list|create|passwd|delete`. API integrasi writer: POST /api/integrations/hermes/articles (Bearer HERMES_API_KEY, mode draft)."
+      },
+      {
+        "action": "add",
+        "content": "Grup Telegram kantor 'hermess': -1004375547308 (forum). Bot @CEO_gua_bot (leader), @warta_writer_bot, @videmake_bot, @softengin_bot — WAJIB admin grup di forum (anggota biasa tak menerima pesan). Restart gateway hanya via `/restart` di Telegram (CLI diblokir)."
+      },
+      {
+        "action": "add",
+        "content": "Cron `b99754ebbb20` (profil writer, 06:00 WIB): riset agent-reach → 3+ artikel → POST draft ke news-web → lapor ke topic 142 grup hermess. Cron tanpa manusia: perintah `-e/-c` diblokir; `cron run` CLI jangan dibungkus timeout pendek. Combo 9router bisa memuat model deprecated → profil mati (HTTP 410; cek `combos` di ~/.9router/db/data.sqlite)."
+      }
+    ]
+  }
+}

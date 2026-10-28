@@ -1,0 +1,20 @@
+{
+  "id": "123bb18f",
+  "subsystem": "memory",
+  "action": "batch",
+  "summary": "background review consolidation (batch on memory): - replace entry matching 'Adi (pemilik) menjalankan blog + kanal video dengan profil Hermes: `default` (leader' -> whole entry becomes: Adi (pemilik)",
+  "origin": "background_review",
+  "created_at": 1793048275.398128,
+  "payload": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+      {
+        "action": "replace",
+        "new_text": "Adi (pemilik) menjalankan blog + kanal video dengan profil Hermes: `default` (leader — koordinator/review), `writer` (artikel blog, cron harian), `videomaker` (video 1 menit, Remotion, ~/video-studio), `softwareengineer` (kode/debug/deploy), `seo` (riset/audit SEO). Grup Telegram tim: \"hermess\" -1004375547308 (bot harus ADMIN grup), topic writer 142. Combo 9router per profil.",
+        "old_text": "Adi (pemilik) menjalankan blog + kanal video dengan profil Hermes: `default` (leader",
+        "matched_entry": "Adi (pemilik) menjalankan blog + kanal video dengan profil Hermes: `default` (leader — koordinator/review), `writer` (artikel blog), `videomaker` (video 1 menit, Remotion, ~/video-studio), `softwareengineer` (kode/debug/deploy, SOUL di ~/.hermes/profiles/softwareengineer/SOUL.md). Combo 9router: leader, writer, videomaker, softwareengineer."
+      }
+    ]
+  }
+}

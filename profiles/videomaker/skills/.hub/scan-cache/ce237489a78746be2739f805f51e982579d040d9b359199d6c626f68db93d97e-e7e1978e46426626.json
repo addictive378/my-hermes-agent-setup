@@ -1,0 +1,13 @@
+{
+  "bundle_hash": "sha256:ce237489a78746be2739f805f51e982579d040d9b359199d6c626f68db93d97e",
+  "scanner_version": "skills-guard-v10",
+  "source": "https://raw.githubusercontent.com/bangtutorial/bang-motion/main/SKILL.md",
+  "source_url": "https://raw.githubusercontent.com/bangtutorial/bang-motion/main/SKILL.md",
+  "verdict": "safe",
+  "trust_level": "community",
+  "findings": [],
+  "rules": [],
+  "scanned_at": "2026-10-26T17:21:44.241573+00:00",
+  "summary": "bang-motion: clean scan, no threats detected",
+  "fresh": true
+}

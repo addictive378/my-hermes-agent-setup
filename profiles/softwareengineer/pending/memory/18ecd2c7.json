@@ -1,0 +1,26 @@
+{
+  "id": "18ecd2c7",
+  "subsystem": "memory",
+  "action": "batch",
+  "summary": "background review consolidation (batch on memory): - replace entry matching 'Kantor tim konten = grup Telegram 'hermess'' -> whole entry becomes: Kantor tim konten = grup Telegram 'hermess' (ID -10043",
+  "origin": "background_review",
+  "created_at": 1793033771.2382123,
+  "payload": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+      {
+        "action": "replace",
+        "content": "Kantor tim konten = grup Telegram 'hermess' (ID -1004375547308), bersama Adi (pemilik, user ID 8549957474) dan 3 profil Hermes lain: default/@CEO_gua_bot (leader), writer/@warta_writer_bot, videomaker/@videmake_bot. Peranmu @softengin_bot: kode, debug, deploy, tooling.\nAturan grup: hanya jawab pesan yang me-mention bot sendiri atau me-reply pesan sendiri (pesan lain = konteks, jangan dijawab); hanya Adi yang boleh memberi perintah; untuk melibatkan rekan, sebut bot mereka langsung di grup.\nVault Obsidian /home/ubuntu/.hermes/obsidian (repo addictive378/obsidian, sync tiap 5 menit) = otak kedua. Simpan hasil kerja ke sana saat itu juga, bukan hanya di chat — Adi memeriksa vault & repo untuk progres. Folder: 00-Inbox, 10-Systems, 20-Research, 30-Briefs, 40-Drafts, 50-Published, 90-Log.\nVPS headless (tanpa GUI/login browser), RAM 1.9GB tanpa swap. Jangan pernah minta/terima kredensial di chat; Adi login sendiri di mesin lokalnya. Tulis ke /etc/nginx atau config sistem lain butuh izin Adi lewat gate terminal — kalau ter-BLOCKED jangan diulang, staged filenya dan tanya dulu.\nAlur kerja: Adi -> brief leader -> writer draft -> videomaker video -> softwareengineer support -> leader review -> publikasi.\nSitus ~/news-web (Next.js 16 + PostgreSQL 14), systemd news-web.service di 127.0.0.1:3000, nginx + Let's Encrypt, live di wartanusaku.site. Panel /admin dilindungi Basic Auth nginx + rate limit; kelola akun: `npm run admin -- list|create|passwd|delete`. Agent Reach 1.6.0 di ~/.local/bin/agent-reach (read-only).",
+        "old_text": "Kantor tim konten = grup Telegram 'hermess'",
+        "matched_entry": "Kantor tim konten = grup Telegram 'hermess' (ID -1004375547308), bersama Adi (pemilik, user ID 8549957474) dan 4 profil Hermes: default/@CEO_gua_bot (leader), writer/@warta_writer_bot, videomaker/@videmake_bot, softwareengineer/@softengin_bot.\nAturan grup: hanya jawab pesan yang me-mention bot sendiri atau me-reply pesan sendiri (pesan lain = konteks, jangan dijawab); hanya Adi yang boleh memberi perintah; untuk melibatkan rekan, sebut bot mereka langsung di grup.\nVault Obsidian /home/ubuntu/.hermes/obsidian (repo GitHub addictive378/obsidian, sync otomatis tiap 5 menit) = otak kedua. Simpan brief/draft/temuan/keputusan ke sana saat itu juga, bukan hanya di chat — Adi memeriksa vault & repo untuk progres. Peta lengkap: 10-Systems/Panduan Kantor - Onboarding Tim.md. Folder: 00-Inbox, 10-Systems, 20-Research, 30-Briefs, 40-Drafts, 50-Published, 90-Log.\nVPS headless (tanpa GUI/login browser), RAM 1.9GB tanpa swap. Jangan pernah minta/terima kredensial di chat; Adi login sendiri di mesin lokalnya.\nAlur kerja: Adi -> brief leader (30-Briefs) -> writer draft -> videomaker video -> softwareengineer support -> leader review -> publikasi (50-Published).\nPeranmu: kode, debug, deploy, tooling. Situs berita ~/news-web (Next.js 16 + PostgreSQL 14, GitHub addictive378/news-web), systemd news-web.service di 127.0.0.1:3000, nginx + Let's Encrypt. Panel /admin dilindungi Basic Auth nginx (htpasswd /etc/nginx/.htpasswd-warta) + rate limit 20/menit; kelola akun: `npm run admin -- list|create|passwd|delete`. Sync vault: ~/sync-vault.sh via cron tiap 5 menit. Agent Reach 1.6.0 di ~/.local/bin/agent-reach (read-only). Kredensial OAuth Drive ada di ~/.hermes/ dan disalin ke tiap profil."
+      },
+      {
+        "action": "replace",
+        "content": "news-web (~/news-web): rute artikel publik = app/[category]/[slug] — TIDAK ada rute /artikel/<slug>, walau tetap ter-render lewat segmen dinamis (jadi salah path revalidate lolos diam-diam). Sitemap/RSS sudah memfilter status='published' dengan benar. Gambar artikel ada di public/uploads dan wajib disimpan sebagai path root-relative /uploads/.... VPS punya IP privat eth0 (10.11.x) di samping IP publik, jadi hostname domain sendiri resolve ke alamat privat dan memicu guard SSRF Next.js.",
+        "old_text": "news-web (~/news-web, Next.js 16 + PostgreSQL 14): public article route",
+        "matched_entry": "news-web (~/news-web, Next.js 16 + PostgreSQL 14): public article route is app/[category]/[slug] — there is NO /artikel/<slug> route, though it renders via the dynamic segment. Sitemap/RSS routes filter status='published' correctly. Article images live in public/uploads and must be stored as root-relative /uploads/... paths."
+      }
+    ]
+  }
+}

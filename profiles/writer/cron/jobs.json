@@ -1,0 +1,133 @@
+{
+  "jobs": [
+    {
+      "id": "b99754ebbb20",
+      "name": "Ritme harian: 3 artikel viral untuk news-web",
+      "prompt": "Anda adalah writer — penulis artikel untuk Warta Nusantara (wartanusaku.site). Jalankan ritme harian Anda: riset tren → pilih topik berpotensi viral → tulis 3 artikel → kirim ke situs.\n\n## LANGKAH 1 — Riset tren (pakai Agent Reach)\nGunakan skill `agent-reach` (CLI `agent-reach` sudah terinstall) untuk membaca tren HARI INI dari channel:\n- GitHub: repo yang sedang trending (`agent-reach github trending`)\n- YouTube: video teknologi dengan view melonjak\n- V2EX & Bilibili: topik yang ramai dibahas\n- Web: berita teknologi/AI terbaru 24 jam\n\nTujuan: petaan 8–12 topik yang sedang panas. Catat ANGKA pembuktinya (bintang repo, view, jumlah komentar, naik-turunnya) — itu bahan \"potensi viral\".\n\n## LANGKAH 2 — Pilih 3+ topik terkuat\nPilih minimal 3 topik dengan kriteria: (a) momentum tinggi DI HARI INI, (b) relevan untuk pembaca Indonesia, (c) Anda punya sumber nyata untuk tiap klaim. Hindari topik yang sudah ditulis kemarin — cek duplikat di https://wartanusaku.site/rss.xml.\n\n## LANGKAH 3 — Tulis artikelnya\n- Bahasa Indonesia, gaya jurnalistik khas Warta Nusantara: padat, faktual, mudah dibaca.\n- Struktur: judul kuat (memicu klik tanpa clickbait), lead 1-2 paragraf, isi bertahap, penutup.\n- Panjang 500–900 kata per artikel. Minimal 3 sumber nyata per artikel (dari riset Langkah 1).\n- Semua klaim angka harus punya sumber. JANGAN mengarang data.\n\n## LANGKAH 4 — Kirim ke news-web\nUntuk TIAP artikel, kirim POST ke API (baca kredensial dari env Anda: `HERMES_API_KEY`, URL ada di `NEWS_WEB_API_URL`).\n\nATURAN PENTING — Anda berjalan TANPA manusia yang bisa menyetujui perintah berisiko:\n- JANGAN pernah pakai `node -e`, `python -c`, `bash -c`, atau pipe yang dianggap \"script execution\" — di cron, perintah seperti itu DIBLOKIR otomatis dan gagal.\n- Tulis payload ke FILE dulu, lalu kirim dengan `curl -d @file`. Untuk menyusun JSON, tulis file JSON/markdown biasa (pakai tool file), BUKAN lewat `-e/-c`.\n- `web_extract` tidak tersedia (backend pencarian hanya search-only). Untuk membaca isi halaman, pakai `agent-reach` (channel web), bukan web_extract.\n\n```bash\ncat /path/payload.json            # periksa hasil\ncurl -sS -X POST \"$NEWS_WEB_API_URL\" \\\n  -H \"Authorization: Bearer $HERMES_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d @/path/ke/payload.json\n```\n\nIsi payload per artikel (schema_version \"1.0\"):\n- `title` (max 300), `slug` (url-safe, unik), `summary` (max 1000, 1-2 kalimat)\n- `body` — isi artikel dalam MARKDOWN (content_format: \"markdown\")\n- `category_slug` — WAJIB salah satu dari: bisnis, indonesia, teknologi, olahraga, opini, sains, internasional, politik\n- `author_slug` — salah satu dari: siti-nurhaliza, rizal-pratama, dewi-anggraini, budi-santoso (pilih yang paling pas dengan topik)\n- `tag_slugs` — 3-5 tag, lowercase, tanpa spasi\n- `language`: \"id\"\n- `sources` — array objek `{title, url, publisher, publishedDate, accessedDate}` untuk TIAP sumber\n- `seo_title` (max 70) — jika judul lebih panjang\n\nArtikel masuk sebagai DRAFT di panel admin (aman — tidak langsung tampil publik; pemilik me-review dan publish).\n\nJika satu artikel gagal dikirim (validasi ditolak), baca pesan error dari respons API, perbaiki payload, coba lagi maksimal 2x. Artikel lain tetap dikirim.\n\n## LANGKAH 5 — Laporan akhir\nBalas dengan ringkasan SINGKAT (ini yang dikirim ke grup): \n- jumlah artikel terkirim + judulnya\n- dari mana tren hari ini berasal (GitHub/YouTube/V2EX/web)\n- jika ada kegagalan: apa dan kenapa\nJangan sertakan isi artikel penuh.\n\nSimpan arsip kerja hari ini ke workspace Anda: ~/workspace/writer/YYYY-MM-DD/ (payload.json + notes.md).",
+      "skills": [
+        "agent-reach"
+      ],
+      "skill": "agent-reach",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "monitor_script": null,
+      "monitor_url": null,
+      "monitor_state": null,
+      "context_from": [
+        "self"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 6 * * *",
+        "display": "0 6 * * *"
+      },
+      "schedule_display": "0 6 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 6
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-10-25T04:48:24.359986+07:00",
+      "next_run_at": "2026-10-29T06:00:00+07:00",
+      "last_run_at": "2026-10-28T06:05:46.922797+07:00",
+      "last_status": "error",
+      "last_error": "RuntimeError: HTTP 503: [openai-compatible-chat-f3a8389b-0ede-403d-9b3b-3cd8c8571bcd/gk/deepseek-v4-flash] [403]: {\"error\":{\"type\":\"authentication_error\",\"message\":\"Masa bansos (maks 7 hari) sudah selesai dan tidak bisa diperpanjang atau diklaim ulang. Lanjut tanpa batas bansos: Plan Unlimited mulai Rp30.0 (reset after 1m ",
+      "last_delivery_error": null,
+      "last_delivery_unverified": null,
+      "last_failure": {
+        "at": "2026-10-28T06:05:46.922797+07:00",
+        "detail": "RuntimeError: HTTP 503: [openai-compatible-chat-f3a8389b-0ede-403d-9b3b-3cd8c8571bcd/gk/deepseek-v4-flash] [403]: {\"error\":{\"type\":\"authentication_error\",\"message\":\"Masa bansos (maks 7 hari) sudah selesai dan tidak bisa diperpanjang atau diklaim ulang. Lanjut tanpa batas bansos: Plan Unlimited mulai Rp30.0 (reset after 1m "
+      },
+      "failure_streak": 1,
+      "deliver": "telegram:-1004375547308:142",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "8549957474",
+        "chat_name": "Adi Saputra",
+        "thread_id": null,
+        "user_id": "8549957474",
+        "scope_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-28T06:00:00+07:00",
+        "dispatched_at": "2026-10-28T06:00:14.601226+07:00",
+        "lateness_seconds": 14.6,
+        "kind": "on_time"
+      }
+    },
+    {
+      "id": "a4f9d28d3d0b",
+      "name": "Politik dalam negeri: 1 artikel tiap 2 jam",
+      "prompt": "Anda adalah writer — penulis artikel Warta Nusantara (wartanusaku.site). Ini tugas BERKALA (tiap 2 jam): tulis **1 artikel berita politik dalam negeri Indonesia** yang paling pentiing saat ini, lalu kirim ke situs.\n\n## Fokus topik (KETAT)\n**Politik DALAM NEGERI Indonesia saja**: pemerintah & kabinet, DPR/MPR/DPRD, partai politik, pilkada/pileg/presiden, kebijakan & regulasi, relasi lembaga negara, isu politik daerah, hukum yang bermuatan politik.\n**BUKAN**: politik luar negeri/internasional (itu kategori internasional, bukan tugas Anda), gosip selebriti, olahraga.\n\n## LANGKAH 1 — Cek anti-duplikat (WAJIB sebelum riset)\n- Baca https://wartanusaku.site/rss.xml — daftar judul yang sudah ada.\n- Ingat output run Anda sebelumnya (continuity aktif).\n- Kalau topik terkuat hari ini sudah pernah ditulis, cari sudut pandang BARU yang berbeda (perkembangan terbaru, angka baru, reaksi baru) — atau pilih topik politik lain yang belum dibahas.\n\n## LANGKAH 2 — Riset\n- `agent-reach` (skill) untuk membaca situs berita & tren.\n- `web_search` dengan query spesifik politik Indonesia jam ini (contoh: \"DPR sidang pleno hari ini\", \"pemerintah kebijakan terbaru\", \"pilkada [daerah]\").\n- Prioritaskan perkembangan TERBARU (jam/hari ini). Berita politik cepat basi — tulis yang masih hangat.\n- Kumpulkan minimal 3 sumber nyata dari media kredibel (media nasional, situs resmi lembaga negara, kantor berita).\n\n## LANGKAH 3 — Tulis artikel\n- 400–700 kata (berita politik perlu cepat tayang, tidak perlu panjang).\n- Struktur berita: judul kuat, lead menjawab apa-siapa-kapan-di mana, isi bertahap dengan kutipan/angka beralih sumber, penutup.\n- Netral dan faktual — Warta Nusantara tidak berpihak. Semua klaim punya sumber. JANGAN mengarang kutipan atau angka.\n- `category_slug`: **politik** (WAJIB).\n\n## LANGKAH 4 — Kirim ke news-web\nBaca kredensial dari env Anda: `HERMES_API_KEY`, URL di `NEWS_WEB_API_URL`.\n\nATURAN PENTING — Anda berjalan TANPA manusia yang bisa menyetujui perintah berisiko:\n- JANGAN pakai `node -e`, `python -c`, `bash -c` — di cron perintah itu DIBLOKIR otomatis.\n- Tulis payload ke FILE dulu, kirim dengan `curl -d @file`.\n- `web_extract` tidak tersedia (backend search-only) — baca isi halaman lewat `agent-reach`.\n\nPayload per artikel (schema_version \"1.0\"): `title` (max 300), `slug` unik, `summary` (1-2 kalimat), `body` MARKDOWN (`content_format: \"markdown\"`), `category_slug: \"politik\"`, `author_slug` (pilih dari: siti-nurhaliza, rizal-pratama, dewi-anggraini, budi-santoso — untuk politik biasanya rizal-pratama atau budi-santoso), `tag_slugs` 3-4 tag lowercase, `language: \"id\"`, `sources[]` tiap sumber `{title, url, publisher, publishedDate, accessedDate}`, `event_time` (ISO/waktu kejadian, jika tahu).\n\nKalau API menolak (validasi), baca pesan error, perbaiki payload, coba lagi maksimal 2x.\n\n## LANGKAH 5 — Laporan\nBalas RINGKAS (dikirim ke topic writer di grup): judul + 1 baris angle artikel + status terkirim. Jika tidak ada topik politik layak hari itu (jarang), kirim 1 baris penjelasan singkat dan jangan memaksa artikel lemah.\n\nArsip ke workspace: `~/workspace/writer/YYYY-MM-DD/` (payload + catatan topik yang sudah diambil, untuk anti-duplikat lintas run).",
+      "skills": [
+        "agent-reach"
+      ],
+      "skill": "agent-reach",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "monitor_script": null,
+      "monitor_url": null,
+      "monitor_state": null,
+      "context_from": [
+        "self"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 1-23/2 * * *",
+        "display": "0 1-23/2 * * *"
+      },
+      "schedule_display": "0 1-23/2 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 19
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-10-26T22:58:22.691419+07:00",
+      "next_run_at": "2026-10-28T13:00:00+07:00",
+      "last_run_at": "2026-10-28T11:05:29.193159+07:00",
+      "last_status": "error",
+      "last_error": "RuntimeError: HTTP 503: [openai-compatible-chat-0c6ba2ef-4e09-434e-8aab-238e01c3af43/kimi-k2.5] [403]: {\"error\":{\"message\":\"Model 'kimi-k2.5' is currently disabled.\",\"type\":\"invalid_request_error\",\"code\":\"model_disabled\"}} (reset after 1m 50s)",
+      "last_delivery_error": null,
+      "last_delivery_unverified": null,
+      "last_failure": {
+        "at": "2026-10-28T11:05:29.193159+07:00",
+        "detail": "RuntimeError: HTTP 503: [openai-compatible-chat-0c6ba2ef-4e09-434e-8aab-238e01c3af43/kimi-k2.5] [403]: {\"error\":{\"message\":\"Model 'kimi-k2.5' is currently disabled.\",\"type\":\"invalid_request_error\",\"code\":\"model_disabled\"}} (reset after 1m 50s)"
+      },
+      "failure_streak": 7,
+      "deliver": "telegram:-1004375547308:142",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "8549957474",
+        "chat_name": "Adi Saputra",
+        "thread_id": null,
+        "user_id": "8549957474",
+        "scope_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "last_dispatch": {
+        "scheduled_at": "2026-10-28T11:00:00+07:00",
+        "dispatched_at": "2026-10-28T11:00:14.445644+07:00",
+        "lateness_seconds": 14.4,
+        "kind": "on_time"
+      },
+      "fire_claim": null
+    }
+  ],
+  "updated_at": "2026-10-28T11:05:29.206448+07:00"
+}

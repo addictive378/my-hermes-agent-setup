@@ -1,0 +1,13 @@
+{
+  "packages": {
+    "venv": {
+      "environment": "/home/ubuntu/.hermes/installs/949180707a3d3d60/environments/24b26a44a6d94283bdf1ce28c1cbee1c/venv",
+      "extras": [
+        "google"
+      ],
+      "resolved_lock": "/home/ubuntu/.hermes/installs/949180707a3d3d60/environments/24b26a44a6d94283bdf1ce28c1cbee1c/workspace/uv.lock",
+      "stamp": "bfe72721508ffcb9130c66c1f848a20e417b3e0adfaf7c26c8172d49fcb569ea"
+    }
+  },
+  "schema": 1
+}

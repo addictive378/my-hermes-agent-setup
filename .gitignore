@@ -1,0 +1,47 @@
+# === Secrets (WAJIB di-ignore) ===
+.env
+.env.*
+auth.json
+auth.lock
+google_client_secret.json
+google_token.json
+*.pem
+*.key
+
+# === Runtime / locks / pid ===
+*.lock
+*.pid
+*.sock
+*.shm
+
+# === SQLite DB mentah (jangan commit file mentah) ===
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+
+# === Cache & logs ===
+cache/
+audio_cache/
+image_cache/
+logs/
+telemetry/
+sessions/
+terminal-sessions/
+plugin-update-checks/
+source-checks/
+.curator_backups/
+backups/
+*.etag
+
+# === Runtime state yang terus berubah ===
+*.log
+processes.json
+gateway-starts.log
+.hermes_history
+spawn-ledger.json
+telegram_update_receipts_*.json
+
+# === Embedded git repos (punya .git sendiri) ===
+hermes-agent/
+obsidian/

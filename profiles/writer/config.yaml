@@ -1,0 +1,156 @@
+model:
+  default: writer
+  provider: custom
+  base_url: http://localhost:20128/v1
+  api_key: ${HERMES_CUSTOM_LOCALHOST_20128_API_KEY}
+_config_version: 50
+agent:
+  max_turns: 150
+  reasoning_effort: medium
+custom_providers:
+  - name: writer
+    base_url: http://localhost:20128/v1
+    key_env: HERMES_CUSTOM_LOCALHOST_20128_API_KEY
+    model: writer
+    models:
+      leader: {}
+      writer: {}
+      videomaker: {}
+      softwareengineer: {}
+      nara/agnes-2.5-flash: {}
+      nara/agnes-3-flash: {}
+      nara/claude-fable-5.1: {}
+      nara/claude-haiku-5.5: {}
+      nara/claude-opus-4.8: {}
+      nara/claude-opus-5: {}
+      nara/claude-opus-5.5: {}
+      nara/claude-sonnet-5: {}
+      nara/claude-sonnet-5.5: {}
+      nara/deepseek-v4.1-flash: {}
+      nara/deepseek-v4.1-flash-fast: {}
+      nara/deepseek-v4.1-flash-uncensored: {}
+      nara/gemini-3.8-flash-high: {}
+      nara/glm-5.2: {}
+      nara/glm-5.3: {}
+      nara/glm-5.3-flash: {}
+      nara/gpt-5.6-luna: {}
+      nara/gpt-5.6-sol: {}
+      nara/gpt-5.6-terra: {}
+      nara/gpt-6-astra: {}
+      nara/gpt-6-luna: {}
+      nara/gpt-6-sol: {}
+      nara/gpt-6.1-sol: {}
+      nara/jev-1.14.0: {}
+      nara/kimi-k2.7-code: {}
+      nara/kimi-k3: {}
+      nara/laguna-s-2.1: {}
+      nara/mimo-v2.6-flash: {}
+      nara/mimo-v2.6-pro: {}
+      nara/minimax-m3: {}
+      nara/minimax-m3.1-flash: {}
+      nara/muse-spark-1.2: {}
+      nara/muse-spark-1.2-contributor: {}
+      nara/muse-spark-1.3: {}
+      nara/muse-spark-1.3-contributor: {}
+      nara/muse-wonder-1.0: {}
+      nara/nemotron-3.5-lightning-free: {}
+      nara/qwen3.8-27b: {}
+      nara/qwen3.8-flash: {}
+      nara/qwen3.8-max: {}
+      nara/step-5-preview: {}
+      nara/stepfun-3.7-flash: {}
+      nara/deepseek-v4-flash: {}
+      nara/deepseek-v4-pro: {}
+      nara/deepseek-v4-flash-alibaba: {}
+      nara/deepseek-v4-flash-vision-exp: {}
+      nara/gemini-3.1-pro-high: {}
+      nara/jev: {}
+      nara/mimo-v2.6-flash-free: {}
+      nara/muse-spark-1.3-contributor-free: {}
+      nara/nemotron-3-ultra-free: {}
+      nara/qwen3.8-max-alibaba: {}
+      gk/deepseek-v4-flash: {}
+      gk/glm-5.3-flash: {}
+      gk/qwen3.8-flash: {}
+      gk/qwen3.8-max: {}
+      gk/gk/deepseek-v4-flash: {}
+      gk/gk/glm-5.3-flash: {}
+      gk/gk/qwen3.8-flash: {}
+      gk/gk/qwen3.8-max: {}
+    models_discovered: true
+web:
+  backend: brave-free
+browser:
+  backend: browser-use
+computer_use:
+  backend: cua
+platform_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - connections
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - memory
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - vision
+    - web
+known_plugin_toolsets:
+  cli:
+    - a2a
+known_builtin_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - connections
+    - context_engine
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - session_search
+    - skills
+    - stt
+    - terminal
+    - todo
+    - tts
+    - video
+    - video_gen
+    - vision
+    - web
+    - x_search
+    - yuanbao
+telemetry:
+  shared_metrics:
+    enabled: false
+    send: false
+    offer_version: 2
+platforms:
+  telegram:
+    require_mention: true
+    bots_require_mention: true
+    group_allow_from:
+      - '8549957474'
+    group_allowed_chats:
+      - '-1004375547308'
+    enabled: true
+    mention_patterns:
+      - '@warta_writer_bot'
+      - warta_writer_bot
+      - writer
+onboarding:
+  seen:
+    profile_build_offered: true

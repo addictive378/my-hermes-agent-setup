@@ -1,0 +1,37 @@
+{
+  "id": "9bea895f",
+  "subsystem": "memory",
+  "action": "batch",
+  "summary": "background review consolidation (batch on memory): - replace entry matching 'Obsidian second-brain vault: /home/ubuntu/.hermes/obsidian' -> whole entry becomes: Otak kedua: vault Obsidian di /home/ubu",
+  "origin": "background_review",
+  "created_at": 1792819881.1556456,
+  "payload": {
+    "action": "batch",
+    "target": "memory",
+    "operations": [
+      {
+        "action": "replace",
+        "content": "Otak kedua: vault Obsidian di /home/ubuntu/.hermes/obsidian, remote GitHub addictive378/obsidian (branch main), dipublikasikan oleh ~/sync-vault.sh yang dijalankan cron tiap 5 menit (tag hermes-obsidian-sync, log ~/.hermes/logs/sync-vault.log). Konvensi folder dan aturan kapan menulis ke vault ada di skill 'obsidian' — jangan diduplikasi di sini.",
+        "old_text": "Obsidian second-brain vault: /home/ubuntu/.hermes/obsidian",
+        "matched_entry": "Obsidian second-brain vault: /home/ubuntu/.hermes/obsidian (GitHub addictive378/obsidian, branch main). Arsitektur: kebanyakan alat ini terkait Obsidian dan Markdown; catatan lingkungan VPS/lainnya dikumpulkan sesuai topik. Struktur folder: 00-Inbox, 10-Systems, 20-Research, 30-Briefs, 40-Drafts, 50-Published, 90-Log; peta di START-HERE.md. Simpan riset/brief/draft/keputusan ke vault, bukan hanya di percakapan chat."
+      },
+      {
+        "action": "replace",
+        "content": "Stack model: 9router di http://localhost:20128/v1 (service 9router.service, config sqlite ~/.9router/db/data.sqlite). Alias 'leader' dan 'writer' BUKAN model asli melainkan combo (rantai fallback) di tabel `combos`; alias baru hanya ada setelah dibuat di router. Cek curl -sS http://localhost:20128/v1/models sebelum memakai sebuah alias di config. Profile role Hermes ada di ~/.hermes/profiles/<nama>/ (writer, videomaker); nama profile wajib lowercase. Profile videomaker sementara memakai nara/deepseek-v4.1-flash sampai combo 'videomaker' dibuat.",
+        "old_text": "Tahun 2026: Adi menjalankan blog dengan profile Hermes bernama writer",
+        "matched_entry": "Tahun 2026: Adi menjalankan blog dengan profile Hermes bernama writer (penulis artikel) yang saya koordinasi sebagai leader. Klien Obsidian terpasang di laptop Adi; vault kedua otak tersinkronisasi lewat GitHub (repo addictive378/obsidian) antara laptop dan VPS di ~/.hermes/obsidian. Alur kerja artikel: saya membuat riset dan brief di vault, writer menulis draft, saya melakukan review dan QA, lalu file .md siap publikasi di simpan di vault."
+      },
+      {
+        "action": "remove",
+        "old_text": "2026-10-23: Cron VPS tiap 5 menit menjalankan sync-vault.sh",
+        "matched_entry": "2026-10-23: Cron VPS tiap 5 menit menjalankan sync-vault.sh (tag hermes-obsidian-sync) — aktif. Script: fetch→rebase→push 3x retry, konflik diselamatkan ke branch hermes-conflict-*, flock, log di ~/.hermes/logs/sync-vault.log."
+      },
+      {
+        "action": "replace",
+        "content": "Agent Reach 1.6.0 (CLI ~/.local/bin/agent-reach, config ~/.agent-reach/, skill tersymlink ke ~/.hermes/skills/agent-reach). Channel aktif read-only tanpa login: github, youtube, bilibili, v2ex, web. Channel yang butuh login (twitter, linkedin, facebook, dll.) tidak bisa diaktifkan di VPS headless — jalankan di laptop pengguna.",
+        "old_text": "Agent Reach 1.6.0 terpasang via uv",
+        "matched_entry": "2026-10-24: Agent Reach 1.6.0 terpasang via uv (CLI ~/.local/bin/agent-reach, config ~/.agent-reach/, skill tersymlink ke ~/.hermes/skills/agent-reach). Channel aktif: github, youtube, bilibili, v2ex, web (read-only, tanpa login). Channel opsional belum aktif; sebagian butuh login browser pengguna."
+      }
+    ]
+  }
+}

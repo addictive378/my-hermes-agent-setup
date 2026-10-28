@@ -1,0 +1,90 @@
+model:
+  default: videomaker
+  provider: custom
+  base_url: http://localhost:20128/v1
+  api_key: ${HERMES_CUSTOM_LOCALHOST_20128_API_KEY}
+_config_version: 50
+agent:
+  max_turns: 150
+  reasoning_effort: medium
+custom_providers:
+  - name: Local (localhost:20128)
+    base_url: http://localhost:20128/v1
+    key_env: HERMES_CUSTOM_LOCALHOST_20128_API_KEY
+    model: videomaker
+web:
+  backend: brave-free
+browser:
+  backend: browser-use
+computer_use:
+  backend: cua
+platform_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - connections
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - memory
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - vision
+    - web
+known_plugin_toolsets:
+  cli:
+    - a2a
+known_builtin_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - connections
+    - context_engine
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - session_search
+    - skills
+    - stt
+    - terminal
+    - todo
+    - tts
+    - video
+    - video_gen
+    - vision
+    - web
+    - x_search
+    - yuanbao
+telemetry:
+  shared_metrics:
+    enabled: false
+    send: false
+    offer_version: 2
+terminal:
+  cwd: /home/ubuntu/video-studio
+platforms:
+  telegram:
+    require_mention: true
+    bots_require_mention: true
+    group_allow_from:
+      - '8549957474'
+    group_allowed_chats:
+      - '-1004375547308'
+    enabled: true
+    mention_patterns:
+      - '@videmake_bot'
+      - videmake_bot
+      - videomaker
+      - videmake
